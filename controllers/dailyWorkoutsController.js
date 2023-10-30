@@ -1,6 +1,6 @@
-import { fetchWorkout } from "../utilities/fetchFunction";
-import randomizeTwoFromArray from "../utilities/randomiserWorkoutFunction"
-import { randomiser, randomExtra } from "../utilities/randomiserFunction";
+import { fetchWorkout } from "../utilities/fetchFunction.js";
+import randomizeTwoFromArray from "../utilities/randomiserWorkoutFunction.js"
+import { randomiser, randomExtra } from "../utilities/randomiserFunction.js";
 
 async function upperBody() {
     try {
@@ -74,6 +74,7 @@ export async function cardio() {
 }
 
 export default async function DailyWorkoutChoice(choice) {
+    
     if (choice === 'FullBody') {
         try {
             const fullBodyData = await fullBody();
