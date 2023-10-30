@@ -1,3 +1,4 @@
+
 import mongoose from "mongoose";
 
 // Define the workout history schema
