@@ -157,3 +157,6 @@ export default async function DailyWorkoutChoice(choice) {
         }
     }
 }
+export function choice(req, res) {
+    console.log(req.body);
+}
