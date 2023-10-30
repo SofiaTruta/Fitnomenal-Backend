@@ -1,5 +1,5 @@
-export async function fetchWorkout(bodyPart) {
-const url = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}?limit=5`;
+export async function fetchWorkout(bodyPart, limit) {
+const url = `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}?limit=${limit}`;
 const options = {
   method: 'GET',
   headers: {
@@ -10,9 +10,8 @@ const options = {
 
 try {
 	const response = await fetch(url, options);
-	const result = await response.text();
-  console.log(result);
-	return(result)
+	const result = await response.json();
+	return result
 } catch (error) {
 	console.error(error);
 }
