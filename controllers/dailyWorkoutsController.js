@@ -74,9 +74,8 @@ export async function cardio() {
 }
 
 export default async function choice(req, res) {
-    const choice = req.body
-    
-    if (choice === 'FullBody') {
+    const choice = req.body.choice
+    if (choice === 'Full Body') {
         try {
             const fullBodyData = await fullBody();
             const workouts = fullBodyData.flat()
@@ -95,13 +94,12 @@ export default async function choice(req, res) {
 
             const randomWorkout = [randomUpperbody0, randomUpperbody1, randomLowerbody0, randomLowerbody1, randomCardio]
             
-            console.log(randomWorkout);
             res.json(randomWorkout)
-            
+
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
-    } else if (choice === 'UpperBody') {
+    } else if (choice === 'Upper Body') {
         try {
             const upperBodyData = await upperBody();
             const workouts = upperBodyData.flat();
@@ -121,14 +119,13 @@ export default async function choice(req, res) {
             const randomCardio = randomiser(cardioWorkouts)
           
             const randomWorkout = [randomBack, randomChest, randomUpperArms, randomLowerArms, randomShoulders, randomCardio]
-           
-            console.log(randomWorkout);
+
             res.json(randomWorkout)
 
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
-    } else if (choice === 'LowerBody') {
+    } else if (choice === 'Lower Body') {
         try {
             const lowerBodyData = await lowerBody();
             const workouts = await lowerBodyData.flat();
@@ -145,7 +142,6 @@ export default async function choice(req, res) {
 
             const randomWorkout = [randomUpperlegs, randomLowerlegs, randomWaist, randomCardio]
             
-            console.log(randomWorkout);
             res.json(randomWorkout)
 
         } catch (error) {
@@ -157,7 +153,6 @@ export default async function choice(req, res) {
             const workouts = cardioData.flat();
             const randomWorkout = randomExtra(workouts);
             
-            console.log(randomWorkout);
             res.json(randomWorkout)
 
         } catch (error) {
