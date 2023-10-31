@@ -73,7 +73,8 @@ export async function cardio() {
 
 }
 
-export default async function DailyWorkoutChoice(choice) {
+export default async function choice(req, res) {
+    const choice = req.body
     
     if (choice === 'FullBody') {
         try {
@@ -93,8 +94,10 @@ export default async function DailyWorkoutChoice(choice) {
             const randomCardio = randomizeTwoFromArray(cardioWorkout);
 
             const randomWorkout = [randomUpperbody0, randomUpperbody1, randomLowerbody0, randomLowerbody1, randomCardio]
-
-            return randomWorkout
+            
+            console.log(randomWorkout);
+            res.json(randomWorkout)
+            
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
@@ -118,8 +121,10 @@ export default async function DailyWorkoutChoice(choice) {
             const randomCardio = randomiser(cardioWorkouts)
           
             const randomWorkout = [randomBack, randomChest, randomUpperArms, randomLowerArms, randomShoulders, randomCardio]
-            
-            return randomWorkout
+           
+            console.log(randomWorkout);
+            res.json(randomWorkout)
+
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
@@ -139,9 +144,10 @@ export default async function DailyWorkoutChoice(choice) {
             const randomCardio = randomizeTwoFromArray(cardioWorkouts)
 
             const randomWorkout = [randomUpperlegs, randomLowerlegs, randomWaist, randomCardio]
+            
+            console.log(randomWorkout);
+            res.json(randomWorkout)
 
-            return randomWorkout
-          
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
@@ -149,14 +155,13 @@ export default async function DailyWorkoutChoice(choice) {
         try {
             const cardioData = await cardio();
             const workouts = cardioData.flat();
-            const randomCardio = randomExtra(workouts);
+            const randomWorkout = randomExtra(workouts);
+            
+            console.log(randomWorkout);
+            res.json(randomWorkout)
 
-            return randomCardio
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }
     }
-}
-export function choice(req, res) {
-    console.log(req.body);
 }
