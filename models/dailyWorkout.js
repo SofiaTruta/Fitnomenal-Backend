@@ -12,8 +12,11 @@ const dailyWorkoutSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  exercise: []
-   
+  exercise: [], // an array of exercise names?
+  status: {
+    type: String, // "in progress" or "completed"
+    default: "in progress", // when the user marks it as finished the status changes to completed
+  },
       
 });
 
