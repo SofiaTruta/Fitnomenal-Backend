@@ -1,6 +1,6 @@
-import { fetchWorkout } from "../utilities/fetchFunction";
-import randomizeTwoFromArray from "../utilities/randomiserWorkoutFunction"
-import { randomiser, randomExtra } from "../utilities/randomiserFunction";
+import { fetchWorkout } from "../utilities/fetchFunction.js";
+import randomizeTwoFromArray from "../utilities/randomiserWorkoutFunction.js"
+import { randomiser, randomExtra } from "../utilities/randomiserFunction.js";
 
 export async function upperBody() {
     try {
@@ -116,13 +116,13 @@ export default async function DailyWorkoutChoice(choice) {
             const waistWorkouts = [workouts[20], workouts[21], workouts[22], workouts[23], workouts[24], workouts[25], workouts[26], workouts[27], workouts[28], workouts[29]]
             const cardioWorkouts = [workouts[30], workouts[31], workouts[32], workouts[33], workouts[34], workouts[35], workouts[36], workouts[37], workouts[38], workouts[39], workouts[40], workouts[41], workouts[42], workouts[43], workouts[44], workouts[45], workouts[46], workouts[47], workouts[48], workouts[49]]
 
-
-            const randomUpperlegs = randomizeTwoFromArray()
-            const randomLowerlegs = randomiser()
-            const randomWaist = randomizeTwoFromArray()
-            const randomCardio = randomizeTwoFromArray()
-
-            return lowerBodyData
+            // Use the randomizer function to select two random exercises
+            const randomUpperlegs = randomizeTwoFromArray(upperlegsWorkouts);
+            const randomLowerlegs = randomizeTwoFromArray(lowerlegsWorkouts);
+            const randomWaist = randomizeTwoFromArray(waistWorkouts);
+            const randomCardio = randomizeTwoFromArray(cardioWorkouts);
+    
+            return [randomUpperlegs, randomLowerlegs, randomWaist, randomCardio];
         } catch (error) {
             console.error('Error in DailyWorkout:', error);
         }

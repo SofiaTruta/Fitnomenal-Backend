@@ -3,7 +3,6 @@ import cors from 'cors'
 import bodyParser from "body-parser"
 import 'dotenv/config'
 import userRouter from "./routes/userRoutes.js";
-import { randomiser } from "./utilities/randomiserFunction.js";
 
 const app = express()
 
@@ -18,8 +17,3 @@ app.listen(port, () => {
 //router
 app.use('/users', userRouter)
 
-// route to daily workouts
-app.get('/daily-workout', (req, res) => {
-    const dailyWorkout = randomiser();
-    res.json({ dailyWorkout });
-  });

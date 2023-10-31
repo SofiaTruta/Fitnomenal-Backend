@@ -11,8 +11,10 @@ const workoutHistorySchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-    dailyWorkout: []
-      
+  status: {
+    type: String,
+    default: "completed",
+  },
 });
 
 // Create the WorkoutHistory model
