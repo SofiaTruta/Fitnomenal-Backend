@@ -28,18 +28,5 @@ const markWorkoutAsCompleted = async (req, res) => {
 
   // Save the completed workout in the "WorkoutHistory" collection
   await workoutHistory.save();
+  }
 }
-
-export async function find(){
-  const email = req.params.email
-    try {
-        const workouts = await WorkoutHistory.find({
-            userId: email //updated so we can actually get the email back in the fetch
-        })
-        console.log(workouts);
-        res.status(200).json(workouts)
-    } catch (error) {
-        console.log('could not find any workouts with that email')
-    }
-}
-
