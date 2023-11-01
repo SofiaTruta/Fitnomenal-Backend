@@ -171,7 +171,7 @@ export async function save(req, res) {
             try {
                 const dailyWorkout = new DailyWorkout({
                     userId: req.body.userId,
-                    exercises: req.body.exercises,
+                    exercises: [req.body.exercises],
                     status: "in progress",
                 }) 
                 console.log(dailyWorkout);
@@ -183,19 +183,19 @@ export async function save(req, res) {
             }
         }
             if(dailyWorkout) {
-                console.log('a workout already exists')
+             
             try {
                 //save to workoutHistory
                 const now = new Date()
                 const discardToWorkoutHistory = new WorkoutHistory({
-                    userId: req.body.userId,
+                    userId: dailyWorkout.userId,
                     date: now,
-                    exercises: req.body.exercises,
+                    exercises: [dailyWorkout.exercises],
                     status: 'incomplete'
                 })
               
                 await discardToWorkoutHistory.save()
-                console.log('saved to workout history')
+                console.log('saved to workout history', discardToWorkoutHistory)
 
                 //delete the old workout we don't want anymore
                 const deleteDiscardedWorkout = await DailyWorkout.deleteOne({"userId": req.body.userId})
@@ -204,7 +204,7 @@ export async function save(req, res) {
                 //create a new workout based on the user
                     const freshWorkout = new DailyWorkout({
                         userId: req.body.userId,
-                        exercises: req.body.exercises,
+                        exercises: [req.body.exercises],
                         status: "in progress",
                     }) 
                   
