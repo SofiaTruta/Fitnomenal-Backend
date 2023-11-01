@@ -19,6 +19,9 @@ const userSchema = new mongoose.Schema({
     },
     goalWeight:{
         type: Number
+    },
+    firstLoggin:{
+        type: String //Added so we can tell if its first time logging in
     }
 })
 
