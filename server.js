@@ -21,6 +21,5 @@ app.listen(port, () => {
 //router
 app.use('/users', userRouter)
 app.use('/daily-workout', dailyWorkoutRouter)
-app.use('/workout-history', workoutHistoryRouter)
 
 

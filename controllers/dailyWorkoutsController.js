@@ -93,8 +93,10 @@ export async function choice(req, res) {
             const randomLowerbody0 = randomiser(lowerBodyWorkouts0);
             const randomLowerbody1 = randomiser(lowerBodyWorkouts1);
             const randomCardio = randomizeTwoFromArray(cardioWorkout);
+            const cardio = randomCardio[0]
+            const cardio0 = randomCardio[1]
 
-            const randomWorkout = [randomUpperbody0, randomUpperbody1, randomLowerbody0, randomLowerbody1, randomCardio]
+            const randomWorkout = [randomUpperbody0, randomUpperbody1, randomLowerbody0, randomLowerbody1, cardio, cardio0]
             
             res.json(randomWorkout)
 
@@ -138,11 +140,17 @@ export async function choice(req, res) {
             const cardioWorkouts = [workouts[30], workouts[31], workouts[32], workouts[33], workouts[34], workouts[35], workouts[36], workouts[37], workouts[38], workouts[39], workouts[40], workouts[41], workouts[42], workouts[43], workouts[44], workouts[45], workouts[46], workouts[47], workouts[48], workouts[49]]
 
             const randomUpperlegs = randomizeTwoFromArray(upperlegsWorkouts)
+            const upperLegs = randomUpperlegs[0]
+            const upperLegs0 = randomUpperlegs[1]
             const randomLowerlegs = randomiser(lowerlegsWorkouts)
             const randomWaist = randomizeTwoFromArray(waistWorkouts)
+            const waist = randomWaist[0]
+            const waist0 = randomWaist[1]
             const randomCardio = randomizeTwoFromArray(cardioWorkouts)
+            const cardio = randomCardio[0]
+            const cardio0 = randomCardio[1]
 
-            const randomWorkout = [randomUpperlegs, randomLowerlegs, randomWaist, randomCardio]
+            const randomWorkout = [upperLegs0, upperLegs, randomLowerlegs, waist0, waist , cardio0, cardio]
             
             res.json(randomWorkout)
 
