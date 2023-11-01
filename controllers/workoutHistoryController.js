@@ -1,5 +1,5 @@
-import { DailyWorkout } from "../models/dailyWorkout";
-import { WorkoutHistory } from "../models/workoutHistory";
+import { DailyWorkout } from "../models/dailyWorkout.js";
+import { WorkoutHistory } from "../models/workoutHistory.js";
 
 //* SAVE THE WORKOUT TO THE WORKOUT HISTORY DB
 const markWorkoutAsCompleted = async (req, res) => {
