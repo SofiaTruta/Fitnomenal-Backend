@@ -8,7 +8,7 @@ import {
 const workoutHistoryRouter = express.Router();
 
 // Get workout history
-workoutHistoryRouter.get('/', getWorkoutHistory);
+workoutHistoryRouter.get('/history', getWorkoutHistory);
 
 // Create a new route for marking a workout as completed
 workoutHistoryRouter.post('/markCompleted/:workoutId', markWorkoutAsCompleted);
