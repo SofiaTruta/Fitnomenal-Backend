@@ -233,3 +233,16 @@ export async function save(req, res) {
    
 }
 
+export async function get(req, res){
+    const user = req.query.userEmail
+    try {
+        const dailyWorkout = await DailyWorkout.findOne({
+            userId: user
+        })
+        res.json(dailyWorkout)
+
+    } catch (error) {
+        console.log('could not find workouts for that user')
+        res.sendStatus(400)
+    }
+}
