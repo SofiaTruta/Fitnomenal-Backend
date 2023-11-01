@@ -1,4 +1,4 @@
-mport { DailyWorkout } from "../models/dailyWorkout.js";
+import { DailyWorkout } from "../models/dailyWorkout.js";
 import { WorkoutHistory } from "../models/workoutHistory.js";
 
 //* SAVE THE WORKOUT TO THE WORKOUT HISTORY DB
