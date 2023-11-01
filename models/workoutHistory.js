@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 // Define the workout history schema
 const workoutHistorySchema = new mongoose.Schema({
   userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Reference to the User model
+    type: String,
     required: true,
   },
   date: {
@@ -15,6 +14,7 @@ const workoutHistorySchema = new mongoose.Schema({
     type: String,
     default: "completed",
   },
+  exercises: []
 });
 
 // Create the WorkoutHistory model
