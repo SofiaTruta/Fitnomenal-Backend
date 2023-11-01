@@ -1,6 +1,7 @@
 import { fetchWorkout } from "../utilities/fetchFunction.js";
 import randomizeTwoFromArray from "../utilities/randomiserWorkoutFunction.js"
 import { randomiser, randomExtra } from "../utilities/randomiserFunction.js";
+import { DailyWorkout } from "../models/dailyWorkout.js";
 
 async function upperBody() {
     try {
@@ -73,7 +74,7 @@ export async function cardio() {
 
 }
 
-export default async function choice(req, res) {
+export async function choice(req, res) {
     const choice = req.body.choice
     if (choice === 'Full Body') {
         try {
@@ -160,3 +161,39 @@ export default async function choice(req, res) {
         }
     }
 }
+
+export async function save(req, res) {
+    try {
+        const dailyWorkout = await DailyWorkout.findOne({"userId": req.body.userId})
+        if (!dailyWorkout){
+            try {
+                const dailyWorkout = new DailyWorkout({
+                    userId: req.body.userId,
+                    exercises: [req.body.exercises],
+                    status: "in progress",
+                }) 
+                console.log(dailyWorkout);
+                await dailyWorkout.save()
+                console.log('Workout saved correctly');
+                res.sendStatus(200)
+            } catch (error) {
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        }else {
+            try {
+                const dailyWorkout = await DailyWorkout.findOne({"userId": req.body.userId});
+                dailyWorkout.exercises.pop()
+                dailyWorkout.exercises.push(req.body.exercises)
+                await dailyWorkout.save()
+                console.log('Workout saved correctly');
+                res.sendStatus(200)
+            } catch (error) {
+                res.status(500).json({ error: "Internal Server Error" });
+            }
+        }
+    } catch (error) {
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+   
+}
+

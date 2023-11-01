@@ -1,9 +1,10 @@
 import express from "express"
-import choice from "../controllers/dailyWorkoutsController.js";
+import { choice, save }from "../controllers/dailyWorkoutsController.js";
 
 const dailyWorkoutRouter = express.Router()
 
 dailyWorkoutRouter.post('/new', choice)
 dailyWorkoutRouter.get('/new', choice)
+dailyWorkoutRouter.post('/newWorkout', save)
 
 export default dailyWorkoutRouter
