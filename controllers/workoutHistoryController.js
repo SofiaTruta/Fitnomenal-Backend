@@ -57,10 +57,13 @@ export { markWorkoutAsCompleted };
 
 //* GET THE DATA FROM THE DB
 const getWorkoutHistory = async (req, res) => {
+  console.log(req.params);
   try {
     // Find all workout history records
-    const workoutHistory = await WorkoutHistory.find();
-
+    const workoutHistory = await WorkoutHistory.find({
+      userId: req.params.email
+    });
+    console.log(workoutHistory);
     return res.status(200).json(workoutHistory);
   } catch (error) {
     return res.status(500).json({ message: "An error occurred" });
