@@ -34,7 +34,7 @@ const markWorkoutAsCompleted = async (req, res) => {
     console.log('moved to workout history', workoutHistory)
 
     //delete the original dailyworkout
-    await DailyWorkout.deleteOne({ "userId": dailyWorkout })
+    await DailyWorkout.deleteOne({ "userId": dailyWorkout.userId })
     console.log('delete workout we dont want')
 
     res.sendStatus(200);
