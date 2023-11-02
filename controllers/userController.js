@@ -33,6 +33,7 @@ async function updateUser(req, res) {
             weight: parseFloat(req.body.weight),
             height: parseFloat(req.body.height),
             goalWeight: parseFloat(req.body.goalWeight),
+            workoutGoal: parseFloat(req.body.workoutGoal),
             firstLoggin: "false" // added so we can redirect if first loggin
         }
         )
@@ -69,6 +70,7 @@ async function newUser(req, res) {
                     height: 0,
                     weight: 0,
                     goalWeight: 0,
+                    workoutGoal: 0,
                     firstLoggin: "true" // added so we can redirect if first loggin
                 });
 
