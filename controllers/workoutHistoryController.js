@@ -17,15 +17,7 @@ const markWorkoutAsCompleted = async (req, res) => {
 
     // Mark the workout as completed
     dailyWorkout.status = "completed";
-    if (!dailyWorkout) {
-      return res.status(404).json({ message: "Workout not found" });
-    }
 
-    // Mark the workout as completed
-    dailyWorkout.status = "completed";
-
-    // Save the updated "in progress" workout
-    await dailyWorkout.save();
     // Save the updated "in progress" workout
     await dailyWorkout.save();
 
