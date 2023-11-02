@@ -17,15 +17,7 @@ const markWorkoutAsCompleted = async (req, res) => {
 
     // Mark the workout as completed
     dailyWorkout.status = "completed";
-    if (!dailyWorkout) {
-      return res.status(404).json({ message: "Workout not found" });
-    }
-
-    // Mark the workout as completed
-    dailyWorkout.status = "completed";
-
-    // Save the updated "in progress" workout
-    await dailyWorkout.save();
+   
     // Save the updated "in progress" workout
     await dailyWorkout.save();
 
@@ -42,7 +34,7 @@ const markWorkoutAsCompleted = async (req, res) => {
     console.log('moved to workout history', workoutHistory)
 
     //delete the original dailyworkout
-    await DailyWorkout.deleteOne({ "userId": dailyWorkout })
+    await DailyWorkout.deleteOne({ "userId": dailyWorkout.userId })
     console.log('delete workout we dont want')
 
     res.sendStatus(200);
