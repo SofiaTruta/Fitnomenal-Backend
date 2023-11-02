@@ -12,6 +12,7 @@ async function showAllUsers(req, res) {
 
 async function findByEmail(req, res) {
     const email = req.params.email
+    console.log(email);
     try {
         const user = await User.findOne({
             email: email //updated so we can actually get the email back in the fetch
@@ -24,20 +25,23 @@ async function findByEmail(req, res) {
 
 // update user details
 async function updateUser(req, res) {
-    console.log(req.body);
+    console.log(parseInt(req.body.weight));
     try {
-       await User.updateOne({
-            "email": req.body.email 
+       const user = await User.findOneAndUpdate({
+            email: req.body.email 
         }, {
             name: req.body.name,
+
             weight: parseFloat(req.body.weight),
             height: parseFloat(req.body.height),
             goalWeight: parseFloat(req.body.goalWeight),
             workoutGoal: parseFloat(req.body.workoutGoal),
+
             firstLoggin: "false" // added so we can redirect if first loggin
         }
         )
-        res.status(200)
+        await user.save();
+        res.status(200).json(user)
     } catch (error) {
         console.log('could not find a user with that email')
     }

@@ -196,7 +196,6 @@ export async function save(req, res) {
                 //save to workoutHistory
                 const now = new Date()
                 const flattenedDW = dailyWorkout.exercises.flat()
-                console.log(flattenedDW[0]);
                 const discardToWorkoutHistory = new WorkoutHistory({
                     userId: dailyWorkout.userId,
                     date: now,
@@ -233,3 +232,16 @@ export async function save(req, res) {
    
 }
 
+export async function get(req, res){
+    const user = req.query.userEmail
+    try {
+        const dailyWorkout = await DailyWorkout.findOne({
+            userId: user
+        })
+        res.json(dailyWorkout)
+
+    } catch (error) {
+        console.log('could not find workouts for that user')
+        res.sendStatus(400)
+    }
+}
