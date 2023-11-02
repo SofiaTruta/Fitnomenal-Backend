@@ -22,10 +22,12 @@ const markWorkoutAsCompleted = async (req, res) => {
     await dailyWorkout.save();
 
     const now = new Date()
+    const flattenedDW = dailyWorkout.exercises.flat()
     // Create a new workoutHistory document for the completed workout
     const workoutHistory = new WorkoutHistory({
       userId: dailyWorkout.userId,
       date: now,
+      exercises: flattenedDW,
       status: "completed",
     });
 
