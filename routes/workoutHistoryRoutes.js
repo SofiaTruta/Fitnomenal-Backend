@@ -17,9 +17,3 @@ workoutHistoryRouter.post('/markCompleted', markWorkoutAsCompleted);
 workoutHistoryRouter.delete('/delete/:workoutId', deleteWorkoutFromHistory);
 
 export default workoutHistoryRouter;
-
-
-
-
-
-
