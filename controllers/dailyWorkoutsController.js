@@ -196,7 +196,6 @@ export async function save(req, res) {
                 //save to workoutHistory
                 const now = new Date()
                 const flattenedDW = dailyWorkout.exercises.flat()
-                console.log(flattenedDW[0]);
                 const discardToWorkoutHistory = new WorkoutHistory({
                     userId: dailyWorkout.userId,
                     date: now,

@@ -17,7 +17,7 @@ const markWorkoutAsCompleted = async (req, res) => {
 
     // Mark the workout as completed
     dailyWorkout.status = "completed";
-   
+
     // Save the updated "in progress" workout
     await dailyWorkout.save();
 
