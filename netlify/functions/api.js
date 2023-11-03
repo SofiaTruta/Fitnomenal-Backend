@@ -2,9 +2,9 @@ import express, {Router} from "express";
 import cors from 'cors'
 import bodyParser from "body-parser"
 import 'dotenv/config'
-import userRouter from "./routes/userRoutes.js";
-import dailyWorkoutRouter from "./routes/dailyWorkoutRoutes.js";
-import workoutHistoryRouter from "./routes/workoutHistoryRoutes.js";
+import userRouter from "../../routes/userRoutes.js";
+import dailyWorkoutRouter from "../../routes/dailyWorkoutRoutes.js";
+import workoutHistoryRouter from "../../routes/workoutHistoryRoutes.js";
 
 const api = express()
 const router = Router()
