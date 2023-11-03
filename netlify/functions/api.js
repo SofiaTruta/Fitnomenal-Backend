@@ -1,4 +1,5 @@
 import express, {Router} from "express";
+import serverless from "serverless-http";
 import cors from 'cors'
 import bodyParser from "body-parser"
 import 'dotenv/config'
