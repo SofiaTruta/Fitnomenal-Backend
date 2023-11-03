@@ -9,8 +9,8 @@ import workoutHistoryRouter from "../../routes/workoutHistoryRoutes.js";
 const api = express()
 const router = Router()
 
-router.use(cors())
-router.use(bodyParser.json())
+api.use(cors())
+api.use(bodyParser.json())
 
 //router
 router.use('/users', userRouter)
